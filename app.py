@@ -8,7 +8,7 @@ try:
     se_key = config.stackexchange['api_key']
 except:
     import os
-    se_key = os.env.get('SE_KEY')
+    se_key = os.environ.get('SE_KEY')
 
 
 if not se_key:
