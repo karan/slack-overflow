@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*- 
 
+import os
+
 from flask import Flask, request, Response, redirect
 from stackexchange import Site, StackOverflow, Sort, DESC
 
@@ -7,7 +9,6 @@ try:
     import config
     se_key = config.stackexchange['api_key']
 except:
-    import os
     se_key = os.environ.get('SE_KEY')
 
 
