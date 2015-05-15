@@ -2,7 +2,7 @@
 
 A programmer's best friend, now in Slack. Search StackOverflow right from Slack without coming off as dumb.
 
-*Show example gif*
+![](http://i.imgur.com/c9HuKw8.gif)
 
 ## Usage
 
