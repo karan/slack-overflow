@@ -17,7 +17,10 @@ From any Slack channel, just type `/overflow [search terms]`. The questions will
   - Command: `/overflow`
   - URL: `http://so.goel.io/overflow`
   - Method: `POST`
-  - All other settings can be set on your own discretion.
+  - For the **Autocomplete help text**, check to show the command in autocomplete list.
+    - Description: `A programmer's best friend, now in Slack.`
+    - Usage hint: `[search terms]`
+  - Descriptive Label: `Search StackOverflow`
 
 ## Developing
 
