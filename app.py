@@ -61,7 +61,8 @@ def overflow():
                         '<https://stackoverflow.com|StackOverflow>.'))
 
     resp_qs.append(('\n<https://donorbox.org/karangoel-karan-s-college-fund|'
-                    'Contribute to Karan\'s College Fund Piggy Bank>'))
+                    ':innocent: Contribute to Karan\'s College '
+                    'Fund Piggy Bank :innocent:>'))
 
     return Response('\n'.join(resp_qs), content_type='text/plain; charset=utf-8')
 
