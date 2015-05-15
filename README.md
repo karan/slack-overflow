@@ -15,7 +15,7 @@ From any Slack channel, just type `/overflow [search terms]`. The questions will
 3. Scroll all the way down to **DIY Integrations & Customizations section**.
 4. Click on **Add** next to **Slash Commands**.
   - Command: `/overflow`
-  - URL: `http://so.goel.io/update`
+  - URL: `http://so.goel.io/overflow`
   - Method: `POST`
   - All other settings can be set on your own discretion.
 
