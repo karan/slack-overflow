@@ -5,7 +5,13 @@ from stackexchange import Site, StackOverflow, Sort, DESC
 
 try:
     import config
+    se_key = config.stackexchange['api_key']
 except:
+    import os
+    se_key = os.env.get('SE_KEY')
+
+
+if not se_key:
     import sys
     print 'No config.py file found. Exiting...'
     sys.exit(0)
@@ -15,7 +21,7 @@ MAX_QUESTIONS = 5
 
 
 app = Flask(__name__)
-so = Site(StackOverflow, config.stackexchange['api_key'])
+so = Site(StackOverflow, se_key)
 
 
 def get_response_string(q):
