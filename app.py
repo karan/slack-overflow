@@ -60,15 +60,23 @@ def overflow():
                         'search directly on '
                         '<https://stackoverflow.com|StackOverflow>.'))
 
-    resp_qs.append(('\n<https://donorbox.org/karangoel-karan-s-college-fund|'
+    resp_qs.append(('\n<https://slack-overflow.herokuapp.com/support|'
                     ':innocent: Contribute to Karan\'s College '
                     'Fund Piggy Bank :innocent:>'))
 
     return Response('\n'.join(resp_qs), content_type='text/plain; charset=utf-8')
 
 
-@app.route('/')
-def hello():
+@app.route('/support')
+def support():
+    mp.track('Support Page')
+    return redirect('https://donorbox.org/karangoel-karan-s-college-fund')
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello(path):
+    mp.track('Homepage')
     return redirect('https://github.com/karan/slack-overflow')
 
 
