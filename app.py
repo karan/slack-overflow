@@ -4,11 +4,13 @@ from flask import Flask, request, Response, redirect
 from mixpanel import Mixpanel
 from stackexchange import Site, StackOverflow, Sort, DESC
 
+import os
+
 try:
     import config
     se_key = config.stackexchange['api_key']
+    mixpanel_token = config.mixpanel['token']
 except:
-    import os
     se_key = os.environ.get('SE_KEY')
     mixpanel_token = os.environ.get('MIXPANEL_TOKEN')
 
@@ -32,6 +34,12 @@ def get_response_string(q):
     check = ' :white_check_mark:' if q.json['is_answered'] else ''
     return "|%d|%s <%s|%s> (%d answers)" % (q_data['score'], check, q.url,
                                             q.title, q_data['answer_count'])
+
+
+@app.route('/support')
+def support():
+    mp.track(-1, 'Support Page')
+    return redirect('https://donorbox.org/karangoel-karan-s-college-fund')
 
 
 @app.route('/overflow', methods=['post'])
@@ -67,19 +75,13 @@ def overflow():
     return Response('\n'.join(resp_qs), content_type='text/plain; charset=utf-8')
 
 
-@app.route('/support')
-def support():
-    mp.track('Support Page')
-    return redirect('https://donorbox.org/karangoel-karan-s-college-fund')
-
-
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def hello(path):
-    mp.track('Homepage')
+@app.route('/')
+def hello():
+    mp.track(-1, 'Homepage')
     return redirect('https://github.com/karan/slack-overflow')
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
