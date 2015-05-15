@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-from flask import Flask, request, Response
+from flask import Flask, request, Response, redirect
 from stackexchange import Site, StackOverflow, Sort, DESC
 
 try:
@@ -44,8 +44,8 @@ def overflow():
 
 @app.route('/')
 def hello():
-    return 'Hello World!'
+    return redirect('https://github.com/karan/slack-overflow')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
