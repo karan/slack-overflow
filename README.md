@@ -8,7 +8,7 @@ A programmer's best friend, now in Slack. Search StackOverflow right from Slack 
 
 From any Slack channel, just type `/overflow [search terms]`. The questions will be shown on the same channel visible just to you.
 
-## Installation
+## Integrate with your team
 
 1. Go to your channel
 2. Click on **Configure Integrations**.
