@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*- 
 
 from flask import Flask, request, Response, redirect
+from mixpanel import Mixpanel
 from stackexchange import Site, StackOverflow, Sort, DESC
 
 try:
@@ -9,9 +10,10 @@ try:
 except:
     import os
     se_key = os.environ.get('SE_KEY')
+    mixpanel_token = os.environ.get('MIXPANEL_TOKEN')
 
 
-if not se_key:
+if not se_key or not mixpanel_token:
     import sys
     print 'No config.py file found. Exiting...'
     sys.exit(0)
@@ -22,6 +24,7 @@ MAX_QUESTIONS = 5
 
 app = Flask(__name__)
 so = Site(StackOverflow, se_key)
+mp = Mixpanel(mixpanel_token)
 
 
 def get_response_string(q):
@@ -37,6 +40,12 @@ def overflow():
     Example:
         /overflow python list comprehension
     '''
+    mp.track(request.values.get('team_domain'), 'New Query', {
+            'channel_name': request.values.get('channel_name'),
+            'user_name': request.values.get('user_name'),
+            'text': request.values.get('text')
+        })
+
     text = request.values.get('text')
 
     qs = so.search(intitle=text, sort=Sort.Votes, order=DESC)
