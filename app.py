@@ -40,15 +40,16 @@ def overflow():
     Example:
         /overflow python list comprehension
     '''
-    mp.track(request.values.get('team_domain'), 'New Query', {
-            'channel_name': request.values.get('channel_name'),
-            'user_name': request.values.get('user_name'),
-            'text': request.values.get('text')
-        })
-
     text = request.values.get('text')
 
     qs = so.search(intitle=text, sort=Sort.Votes, order=DESC)
+
+    mp.track(request.values.get('team_domain'), 'New Query', {
+            'channel_name': request.values.get('channel_name'),
+            'user_name': request.values.get('user_name'),
+            'text': request.values.get('text'),
+            'question_length': len(qs)
+        })
 
     resp_qs = ['Stack Overflow Top Questions for "%s"\n' % text]
     for q in qs[:MAX_QUESTIONS]:
