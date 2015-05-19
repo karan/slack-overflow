@@ -40,7 +40,13 @@ def overflow():
     '''
     text = request.values.get('text')
 
-    qs = so.search(intitle=text, sort=Sort.Votes, order=DESC)
+    try:
+        qs = so.search(intitle=text, sort=Sort.Votes, order=DESC)
+    except UnicodeEncodeError:
+        return Response(('Only English language is supported. '
+                         '%s is not valid input.' % text),
+                         content_type='text/plain; charset=utf-8')
+
 
     resp_qs = ['Stack Overflow Top Questions for "%s"\n' % text]
     for q in qs[:MAX_QUESTIONS]:
@@ -51,7 +57,8 @@ def overflow():
                         'search directly on '
                         '<https://stackoverflow.com|StackOverflow>.'))
 
-    return Response('\n'.join(resp_qs), content_type='text/plain; charset=utf-8')
+    return Response('\n'.join(resp_qs),
+                    content_type='text/plain; charset=utf-8')
 
 
 @app.route('/')
