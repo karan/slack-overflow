@@ -1,0 +1,12 @@
+{
+    "name": "Slack Overflow",
+    "description": "A programmer's best friend, now in Slack.",
+    "keywords": [
+        "slack",
+        "flask",
+        "python",
+        "web",
+        "stack overflow"
+    ],
+    "repository": "https://github.com/karan/slack-overflow",
+}

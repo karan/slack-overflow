@@ -34,6 +34,11 @@ $ pip install -r requirements.txt
 $ python app.py
 ```
 
+## Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
 ## Contributing
 
 - Please use the [issue tracker](https://github.com/karan/slack-overflow/issues) to report any bugs or file feature requests.
