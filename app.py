@@ -49,8 +49,7 @@ def overflow():
 
 
     resp_qs = ['Stack Overflow Top Questions for "%s"\n' % text]
-    for q in qs[:MAX_QUESTIONS]:
-        resp_qs.append(get_response_string(q))
+    resp_qs.extend(map(get_response_string, qs[:MAX_QUESTIONS]))
 
     if len(resp_qs) is 1:
         resp_qs.append(('No questions found. Please try a broader search or '
