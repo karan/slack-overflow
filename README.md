@@ -34,6 +34,13 @@ $ pip install -r requirements.txt
 $ python app.py
 ```
 
+## Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+You will need to set the `SE_KEY` environment variable in your heroku app in order for this to work. You can read more about it [clicking here](https://devcenter.heroku.com/articles/config-vars#setting-up-config-vars-for-a-deployed-application)
+
+
 ## Contributing
 
 - Please use the [issue tracker](https://github.com/karan/slack-overflow/issues) to report any bugs or file feature requests.
